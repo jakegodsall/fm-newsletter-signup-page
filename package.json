@@ -1,0 +1,15 @@
+{
+  "name": "fm-newsletter-signup-page",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "liteServer --baseDir='/src/"
+  },
+  "keywords": [],
+  "author": "Jake Godsall",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
