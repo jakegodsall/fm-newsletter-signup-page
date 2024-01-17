@@ -1,17 +1,17 @@
-const form = document.getElementById("signup__form");
+const form = document.getElementById("signup-form");
 
-const mainPage = document.getElementById("main-page");
+const signupPage = document.getElementById("signup-page");
 const thankyouPage = document.getElementById("thankyou-page");
-const dismissButton = document.getElementById("thankyou__dismissBtn");
+const dismissButton = document.getElementById("thankyou-dismissBtn");
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  mainPage.classList.add("hidden");
+  signupPage.classList.add("hidden");
   thankyouPage.classList.add("show");
 });
 
 dismissButton.addEventListener("click", () => {
-  mainPage.classList.remove("hidden");
+  signupPage.classList.remove("hidden");
   thankyouPage.classList.remove("show");
 });
