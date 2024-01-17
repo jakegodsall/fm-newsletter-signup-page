@@ -36,11 +36,18 @@ li {
   font-size: 1.6rem;
 }
 
-.main {
-  max-width: 37.5rem;
+.container {
+  position: relative;
+  overflow: hidden;
 }
 
-.main__image {
+.main {
+  max-width: 37.5rem;
+  opacity: 1;
+  transition: all 0.8s ease-in-out;
+}
+
+.signup__image {
   width: 100%;
   height: 28rem;
   background-image: url("./assets/images/illustration-sign-up-mobile.svg");
@@ -49,61 +56,61 @@ li {
   margin-bottom: 4rem;
 }
 
-.main__content {
+.signup__content {
   padding-inline: 2.4rem;
 }
 
-.main__title {
+.signup__title {
   font-size: 4rem;
   margin-bottom: 2.4rem;
 }
 
-.main__description {
+.signup__description {
   margin-bottom: 2.4rem;
 }
 
-.main__list {
+.signup__list {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 4.1rem;
 }
 
-.main__listItem {
+.signup__listItem {
   display: flex;
   align-items: flex-start;
   gap: 1.6rem;
 }
 
-.main__form {
+.signup__form {
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
   margin-bottom: 4rem;
 }
 
-.main__formInputLabel {
+.signup__formInputLabel {
   display: flex;
   flex-direction: column;
 }
 
-.main__formLabel {
+.signup__formLabel {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 0.8rem;
 }
 
-.main__formInput {
+.signup__formInput {
   padding: 1.6rem 2.4rem;
   border-radius: 0.8rem;
   border: 1px solid rgba(25, 24, 43, 0.25);
 }
 
-.main__formInput:focus {
+.signup__formInput:focus {
   outline: 1px solid rgba(25, 24, 43, 0.75);
 }
 
-.main__formButton {
+.signup__formButton {
   color: #fff;
   font-weight: 700;
   background-color: var(--dark-grey);
@@ -113,9 +120,9 @@ li {
 }
 
 .thankyou {
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 0;
+  transform: translateY(100%);
   width: 100%;
   height: 100%;
   background: #fff;
@@ -123,4 +130,13 @@ li {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 0.8s ease-in-out;
+}
+
+.show {
+  transform: translateX(0);
+}
+
+.hidden {
+  opacity: 0;
 }
