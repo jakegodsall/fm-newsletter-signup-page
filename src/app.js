@@ -25,27 +25,20 @@ class FormElementValidator {
     return this.inputIsEmpty() || this.validator(this.formElement.value);
   }
 
-  makeErrorMessageVisible() {
-    this.errorDOM.classList.add("show");
-  }
-
-  makeErrorMessageInvisble() {
-    this.errorDOM.classList.remove("show");
-  }
-
   validate() {
     if (!this.validateInput()) {
-      this.makeErrorMessageVisible(this.errorDOM);
-      console.log("Not valid");
+      this.formElement.classList.add("error-state");
+      this.errorDOM.classList.add("show");
     } else {
-      this.makeErrorMessageInvisble(this.errorDOM);
-      console.log("valid");
+      this.formElement.classList.remove("error-state");
+      this.errorDOM.classList.remove("show");
     }
   }
 }
 
 emailElement.addEventListener("change", () => {
   const errorDOMElement = document.getElementById("signup__validationMessage");
+
   const emailValidator = new FormElementValidator(
     emailElement,
     validateEmailString,
