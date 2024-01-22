@@ -25,16 +25,16 @@ class FormInputElementValidator {
     this.validator = validator;
   }
 
-  inputIsEmpty() {
+  isEmpty() {
     return this.inputElement.value.trim().length === 0;
   }
 
-  validateInput() {
-    return this.inputIsEmpty() || this.validator(this.inputElement.value);
+  isValid() {
+    return !this.isEmpty() && this.validator(this.inputElement.value);
   }
 
   validateAndRender() {
-    if (!this.validateInput()) {
+    if (!this.isValid()) {
       this.inputElement.classList.add("error-state");
       this.errorMessageElement.classList.add("show");
       this.submitButtonElement.classList.add("error-state");
@@ -44,7 +44,7 @@ class FormInputElementValidator {
       this.submitButtonElement.classList.remove("error-state");
     }
 
-    return this.validateInput();
+    return this.isValid();
   }
 }
 
@@ -66,7 +66,9 @@ emailInputElement.addEventListener("change", () => {
 formElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  if (emailValidator.validateInput()) {
+  if (emailValidator.isEmpty() || !emailValidator.isValid()) {
+    emailValidator.validateAndRender();
+  } else {
     signupPage.classList.add("hidden");
     thankyouPage.classList.add("show");
   }
