@@ -36,7 +36,17 @@
           </ul>
           <form class="signup__form" id="signup-form">
             <div class="signup__formInputLabel">
-              <label class="signup__formLabel" for="email">Email address</label>
+              <div class="signup__formTopRow">
+                <label class="signup__formLabel" for="email"
+                  >Email address</label
+                >
+                <p
+                  class="signup__validationMessage"
+                  id="signup__validationMessage"
+                >
+                  Email is invalid.
+                </p>
+              </div>
               <input
                 class="signup__formInput"
                 type="text"

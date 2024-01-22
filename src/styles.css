@@ -96,6 +96,22 @@ li {
   margin-bottom: 4rem;
 }
 
+.signup__formTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.signup__validationMessage {
+  font-size: 1.2rem;
+  color: #f00;
+  opacity: 0;
+}
+
+.signup__validationMessage.show {
+  opacity: 1;
+}
+
 .signup__formInputLabel {
   display: flex;
   flex-direction: column;
