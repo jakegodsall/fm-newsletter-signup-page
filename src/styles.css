@@ -148,6 +148,12 @@ li {
   border-radius: 0.8rem;
   border: none;
   cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+
+.signup__formButton.error-state {
+  opacity: 0.8;
+  cursor: not-allowed;
 }
 
 .thankyou {

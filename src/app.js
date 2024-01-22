@@ -1,5 +1,7 @@
-const form = document.getElementById("signup-form");
-const emailElement = document.getElementById("email");
+// Form elements
+const formElement = document.getElementById("signup-form");
+const emailInputElement = document.getElementById("email");
+const submitButtonElement = document.getElementById("signup-submitButton");
 
 const signupPage = document.getElementById("signup-page");
 const thankyouPage = document.getElementById("thankyou-page");
@@ -10,49 +12,64 @@ function validateEmailString(email) {
   return regex.test(email);
 }
 
-class FormElementValidator {
-  constructor(formElement, validator, errorDOM) {
-    this.formElement = formElement;
+class FormInputElementValidator {
+  constructor(
+    inputElement,
+    errorMessageElement,
+    submitButtonElement,
+    validator
+  ) {
+    this.inputElement = inputElement;
+    this.errorMessageElement = errorMessageElement;
+    this.submitButtonElement = submitButtonElement;
     this.validator = validator;
-    this.errorDOM = errorDOM;
   }
 
   inputIsEmpty() {
-    return this.formElement.value.trim().length === 0;
+    return this.inputElement.value.trim().length === 0;
   }
 
   validateInput() {
-    return this.inputIsEmpty() || this.validator(this.formElement.value);
+    return this.inputIsEmpty() || this.validator(this.inputElement.value);
   }
 
-  validate() {
+  validateAndRender() {
     if (!this.validateInput()) {
-      this.formElement.classList.add("error-state");
-      this.errorDOM.classList.add("show");
+      this.inputElement.classList.add("error-state");
+      this.errorMessageElement.classList.add("show");
+      this.submitButtonElement.classList.add("error-state");
     } else {
-      this.formElement.classList.remove("error-state");
-      this.errorDOM.classList.remove("show");
+      this.inputElement.classList.remove("error-state");
+      this.errorMessageElement.classList.remove("show");
+      this.submitButtonElement.classList.remove("error-state");
     }
+
+    return this.validateInput();
   }
 }
 
-emailElement.addEventListener("change", () => {
-  const errorDOMElement = document.getElementById("signup__validationMessage");
+const errorMessageElementElement = document.getElementById(
+  "signup__validationMessage"
+);
 
-  const emailValidator = new FormElementValidator(
-    emailElement,
-    validateEmailString,
-    errorDOMElement
-  );
+const emailValidator = new FormInputElementValidator(
+  emailInputElement,
+  errorMessageElementElement,
+  submitButtonElement,
+  validateEmailString
+);
 
-  emailValidator.validate();
+emailInputElement.addEventListener("change", () => {
+  emailValidator.validateAndRender();
 });
 
-form.addEventListener("submit", (event) => {
+formElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  signupPage.classList.add("hidden");
-  thankyouPage.classList.add("show");
+  if (emailValidator.validateInput()) {
+    signupPage.classList.add("hidden");
+    thankyouPage.classList.add("show");
+  }
 });
 
 dismissButton.addEventListener("click", () => {
