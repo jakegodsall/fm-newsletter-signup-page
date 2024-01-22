@@ -17,8 +17,12 @@ class FormElementValidator {
     this.errorDOM = errorDOM;
   }
 
+  inputIsEmpty() {
+    return this.formElement.value.trim().length === 0;
+  }
+
   validateInput() {
-    return this.validator(this.formElement);
+    return this.inputIsEmpty() || this.validator(this.formElement.value);
   }
 
   makeErrorMessageVisible() {
@@ -32,8 +36,10 @@ class FormElementValidator {
   validate() {
     if (!this.validateInput()) {
       this.makeErrorMessageVisible(this.errorDOM);
+      console.log("Not valid");
     } else {
       this.makeErrorMessageInvisble(this.errorDOM);
+      console.log("valid");
     }
   }
 }

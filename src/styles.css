@@ -104,8 +104,10 @@ li {
 
 .signup__validationMessage {
   font-size: 1.2rem;
+  font-weight: 700;
   color: #f00;
   opacity: 0;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .signup__validationMessage.show {
