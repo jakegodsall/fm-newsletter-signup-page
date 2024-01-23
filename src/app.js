@@ -78,16 +78,19 @@ emailInputElement.addEventListener("change", () => {
 formElement.addEventListener("submit", (event) => {
   event.preventDefault();
 
+  // If not valid, show validation message
   if (emailValidator.isEmpty() || !emailValidator.isValid()) {
     emailValidator.validateAndRender();
   } else {
+    // Get an object of the data submitted with the form
     const fd = new FormData(formElement);
     const obj = Object.fromEntries(fd.entries());
 
+    // Populate the span with the provided email address
     const emailElement = document.getElementById("thankyou-email");
-
     emailElement.innerText = obj.email;
 
+    // Transition to thank you page
     signupPage.classList.add("hidden");
     thankyouPage.classList.add("show");
   }
