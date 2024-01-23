@@ -81,6 +81,13 @@ formElement.addEventListener("submit", (event) => {
   if (emailValidator.isEmpty() || !emailValidator.isValid()) {
     emailValidator.validateAndRender();
   } else {
+    const fd = new FormData(formElement);
+    const obj = Object.fromEntries(fd.entries());
+
+    const emailElement = document.getElementById("thankyou-email");
+
+    emailElement.innerText = obj.email;
+
     signupPage.classList.add("hidden");
     thankyouPage.classList.add("show");
   }
