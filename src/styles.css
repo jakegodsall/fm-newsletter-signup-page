@@ -140,20 +140,32 @@ li {
   outline: none;
 }
 
+.signup__formInput:hover {
+  cursor: pointer;
+}
+
 .signup__formButton {
   color: #fff;
   font-weight: 700;
   background-color: var(--dark-grey);
-  padding: 1.6rem 0;
+  padding: 1.8rem 0;
   border-radius: 0.8rem;
   border: none;
   cursor: pointer;
-  transition: all 0.5s ease-in-out;
+  transition: box-shadow 0.5s;
 }
 
 .signup__formButton.error-state {
   opacity: 0.8;
   cursor: not-allowed;
+}
+
+.signup__formButton:not(.error-state):hover {
+  background: var(
+    --Gradient-1,
+    linear-gradient(204deg, #ff6a3a 0%, #ff527b 100%)
+  );
+  box-shadow: 0px 16px 32px 0px rgba(255, 97, 85, 0.5);
 }
 
 .thankyou {
@@ -225,7 +237,7 @@ li {
   .signup {
     display: flex;
     flex-direction: row-reverse;
-    transition: opacity 2s ease-in-out;
+    transition: opacity 1s ease-in-out;
   }
 
   .signup__content {
@@ -254,6 +266,12 @@ li {
   .thankyou__content {
     flex-grow: unset;
     width: 38rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .thankyou.show .thankyou__content {
+    opacity: 1;
   }
 
   .thankyou h1 {
@@ -262,5 +280,11 @@ li {
 
   .thankyou button {
     width: 38rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .thankyou.show button {
+    opacity: 1;
   }
 }

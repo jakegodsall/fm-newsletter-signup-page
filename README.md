@@ -8,8 +8,7 @@ This is a solution to the [Newsletter Signup Page challenge on Frontend Mentor](
 
 Users should be able to:
 
--Add their email and submit the form
-
+- Add their email and submit the form
 - See a success message with their email after successfully submitting the form
 - See form validation messages if:
   - The field is left empty
@@ -19,7 +18,7 @@ Users should be able to:
 
 ### Screenshot
 
-<img src="" width=300px>
+<img src="./complete/desktop-screenshot.png" width=300px>
 
 ### Links
 
