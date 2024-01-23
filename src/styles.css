@@ -246,6 +246,20 @@ li {
   }
 
   .thankyou {
+    align-items: center;
     transition: all 2s ease-in-out;
+  }
+
+  .thankyou__content {
+    flex-grow: unset;
+    width: 38rem;
+  }
+
+  .thankyou h1 {
+    font-size: 5.6rem;
+  }
+
+  .thankyou button {
+    width: 38rem;
   }
 }
